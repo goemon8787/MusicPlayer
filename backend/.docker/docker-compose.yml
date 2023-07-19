@@ -1,0 +1,57 @@
+version: '3'
+services:
+    app:
+        container_name: music-api
+        image: music-api
+        build:
+            context: .
+            dockerfile: api/Dockerfile
+        volumes:
+            - ..:/workspace
+            - ../../data/:/data
+        tty: true
+        env_file:
+            - api/.env
+        environment:
+            - TZ=Asia/Tokyo
+        working_dir: /workspace
+        ports:
+            - 3000:3000
+            - 8080:8080
+        links:
+            - db
+
+    parser:
+        container_name: music-parser
+        image: music-parser
+        build:
+            context: .
+            dockerfile: parser/Dockerfile
+        volumes:
+            - ..:/workspace
+            - ../../data/:/data
+        tty: true
+        env_file:
+            - parser/.env
+        environment:
+            - TZ=Asia/Tokyo
+        working_dir: /workspace
+        links:
+            - db
+            
+    db:
+        container_name: music-db
+        image: music-db
+        build: 
+            context: .
+            dockerfile: mysql/Dockerfile
+        hostname: go_sql
+        ports:
+            - 3306:3306
+        env_file:
+            - mysql/.env
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --skip-character-set-client-handshake
+        volumes:
+            - ../db/mysql:/var/lib/mysql
+            - ./mysql/my.conf:/etc/mysql/my.conf
+            - ../db/init/:/docker-entrypoint-initdb.d
