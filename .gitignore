@@ -1,3 +1,5 @@
+.DS_Store
+
 # Logs
 logs
 *.log
@@ -128,3 +130,15 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# musics
+*.mp3
+*.flac
+*.aif
+*.aiff
+*.wav
+
+# images
+*.jpg
+
+
