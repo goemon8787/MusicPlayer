@@ -38,14 +38,14 @@ services:
         working_dir: /workspace
         links:
             - db
-            
+
     db:
         container_name: music-db
         image: music-db
         build: 
             context: .
             dockerfile: mysql/Dockerfile
-        hostname: go_sql
+        hostname: music
         ports:
             - 3306:3306
         env_file:

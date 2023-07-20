@@ -1,11 +1,11 @@
 -- MusicPlayerデータベースの作成
-CREATE DATABASE IF NOT EXISTS MusicPlayer;
+CREATE DATABASE IF NOT EXISTS music_player;
 
 -- MusicPlayerデータベースを使用
 USE MusicPlayer;
 
 -- Infoテーブルの作成
-CREATE TABLE IF NOT EXISTS Info (
+CREATE TABLE IF NOT EXISTS info (
     id INT AUTO_INCREMENT PRIMARY KEY,
     path NVARCHAR(255) NOT NULL,
     title NVARCHAR(255) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Info (
 );
 
 -- Artworkテーブルの作成
-CREATE TABLE IF NOT EXISTS Artwork (
+CREATE TABLE IF NOT EXISTS artwork (
     id INT AUTO_INCREMENT PRIMARY KEY,
     path NVARCHAR(255) NOT NULL
 )

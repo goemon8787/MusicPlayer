@@ -34,4 +34,3 @@ if __name__ == "__main__":
 
         info = AudioInfo(title=title, album=album, artist=artist, path=file)
         print(repr(info))
-
