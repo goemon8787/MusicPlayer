@@ -8,7 +8,7 @@ services:
             dockerfile: api/Dockerfile
         volumes:
             - ..:/workspace
-            - ../../data/:/data
+            - ${DATA}:/data
         tty: true
         env_file:
             - api/.env
@@ -29,7 +29,7 @@ services:
             dockerfile: parser/Dockerfile
         volumes:
             - ..:/workspace
-            - ../../data/:/data
+            - ${DATA}:/data
         tty: true
         env_file:
             - parser/.env
