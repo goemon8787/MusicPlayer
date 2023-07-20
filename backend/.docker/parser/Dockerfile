@@ -6,7 +6,7 @@ ENV LANG ja_JP.UTF-8
 
 RUN apt -y update
 RUN apt install -y default-mysql-client-core build-essential
-RUN pip install mutagen numpy pandas "pysen[lint]"
+RUN pip install mutagen numpy pandas "pysen[lint]" mysqlclient
 
 WORKDIR /workspace/src/parser
 

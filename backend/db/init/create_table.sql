@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS music_player;
 
 -- MusicPlayerデータベースを使用
-USE MusicPlayer;
+USE music_player;
 
 -- Infoテーブルの作成
 CREATE TABLE IF NOT EXISTS info (
