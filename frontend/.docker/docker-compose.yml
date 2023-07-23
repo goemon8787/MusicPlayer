@@ -1,6 +1,6 @@
 version: "3.9"
 services:
-  app:
+  music-frontend:
     container_name: music-front
     image: music-front
     build:
@@ -15,6 +15,6 @@ services:
       - TZ=Asia/Tokyo
     working_dir: /workspace
     ports:
-      - 8080:8080
-      - 5173:5173
-      - 3000:3000
+      - "8081:8081"
+      - "5173:5173"
+

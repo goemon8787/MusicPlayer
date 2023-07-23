@@ -1,6 +1,6 @@
 version: '3'
 services:
-    app:
+    music-backend:
         container_name: music-api
         image: music-api
         env_file:
@@ -10,13 +10,12 @@ services:
             dockerfile: api/Dockerfile
         volumes:
             - ..:/workspace
-            - /mnt/d/SNAS/Music/20200223:/data
+            - $DATA_DIR:/data
         tty: true
         environment:
             - TZ=Asia/Tokyo
-        working_dir: /workspace
+        working_dir: /workspace/src/api
         ports:
-            - 3000:3000
             - 8080:8080
         links:
             - db
@@ -31,11 +30,11 @@ services:
             - .env
         volumes:
             - ..:/workspace
-            - /mnt/d/SNAS/Music/20200223:/data
+            - $DATA_DIR:/data
         tty: true
         environment:
             - TZ=Asia/Tokyo
-        working_dir: /workspace
+        working_dir: /workspace/src/parser
         links:
             - db
 
