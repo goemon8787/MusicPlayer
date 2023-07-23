@@ -1,9 +1,10 @@
 <template>
   <!-- <HelloWorld /> -->
-  <MusicPlayer />
+  <MusicList></MusicList>
 </template>
 
 <script setup>
 // import HelloWorld from '@/components/HelloWorld.vue'
-import MusicPlayer from "@/components/MusicPlayer.vue";
+import MusicList from "@/components/MusicList.vue";
+import Player from "@/components/Player.vue";
 </script>

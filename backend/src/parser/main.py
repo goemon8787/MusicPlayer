@@ -1,6 +1,6 @@
 import argparse
-from pathlib import Path
 import os
+from pathlib import Path
 
 import mutagen
 import MySQLdb
@@ -38,8 +38,8 @@ def get_info(file):
         album = str(m.get("TALB"))
         artist = str(m.get("TPE1"))
     elif isinstance(m, mutagen.mp4.MP4):
-        title = str(m.get('\xa9nam', [None])[0])
-        album = str(m.get('\xa9alb', [None])[0])
+        title = str(m.get("\xa9nam", [None])[0])
+        album = str(m.get("\xa9alb", [None])[0])
         artist = str(m.get("\xa9ART", [None])[0])
     else:
         print(type(m))
@@ -48,11 +48,12 @@ def get_info(file):
     return AudioInfo(title=title, album=album, artist=artist, path=str(file))
 
 
-    return AudioInfo(title=title, album=album, artist=artist, path=str(file))
-
-
 def insert_info(info):
-    cursor.execute(info.get_insert_query(args.table), tuple(info.__dict__.values()))
+    cursor.execute(
+        info.get_insert_query(args.table),
+        tuple([info.path, info.title, info.album, info.artist]),
+    )
+
 
 def isin_db(info):
     cursor.execute(info.get_select_query(args.table), (info.path, info.title))
@@ -81,7 +82,7 @@ if __name__ == "__main__":
             if mutagen.File(file) is None:
                 continue
         except mutagen.flac.FLACNoHeaderError:
-            print("invalid flac file:",file)
+            print("invalid flac file:", file)
             continue
 
         info = get_info(file)

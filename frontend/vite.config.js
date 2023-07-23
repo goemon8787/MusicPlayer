@@ -8,7 +8,6 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  
   plugins: [
     vue({
       template: { transformAssetUrls },
@@ -31,5 +30,6 @@ export default defineConfig({
   server: {
     host: true,
     port: 8081,
+    cors: true,
   },
 });

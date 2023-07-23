@@ -19,10 +19,7 @@
           <v-list-item-title>The Walker</v-list-item-title>
           <v-list-item-subtitle>Fitz & The Trantrums</v-list-item-subtitle>
           <template v-slot:append>
-            <v-btn
-              icon="mdi-rewind"
-              variant="text"
-            ></v-btn>
+            <v-btn icon="mdi-rewind" variant="text"></v-btn>
 
             <v-btn
               :class="{ 'mx-5': display.mdAndUp }"
@@ -50,10 +47,10 @@
 <script setup>
 import music from "@/assets/sample-data/ゆいかおり/LUCKY DUCKY!!/LUCKY DUCKY!!.flac";
 import { watch, ref, onMounted } from "vue";
-import { useDisplay } from 'vuetify'
+import { useDisplay } from "vuetify";
 
-const playing = ref(false)
-const display = useDisplay()
+const playing = ref(false);
+const display = useDisplay();
 const audioPlayer = ref(new Audio(music));
 
 const playOrPause = () => {
@@ -64,7 +61,7 @@ const playOrPause = () => {
     audioPlayer.value.play();
     playing.value = true;
   }
-}
+};
 
 const pauseStatus = ref("mdi-play");
 
@@ -81,7 +78,6 @@ watch(playing, (newPlaying) => {
 onMounted(() => {
   audioPlayer.value.addEventListener("timeupdate", updateCurrentTime);
 });
-
 </script>
 
 <script>
