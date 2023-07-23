@@ -3,15 +3,15 @@ services:
     app:
         container_name: music-api
         image: music-api
+        env_file:
+            - .env
         build:
             context: .
             dockerfile: api/Dockerfile
         volumes:
             - ..:/workspace
-            - ${DATA}:/data
+            - /mnt/d/SNAS/Music/20200223:/data
         tty: true
-        env_file:
-            - api/.env
         environment:
             - TZ=Asia/Tokyo
         working_dir: /workspace
@@ -27,12 +27,12 @@ services:
         build:
             context: .
             dockerfile: parser/Dockerfile
+        env_file:
+            - .env
         volumes:
             - ..:/workspace
-            - ${DATA}:/data
+            - /mnt/d/SNAS/Music/20200223:/data
         tty: true
-        env_file:
-            - parser/.env
         environment:
             - TZ=Asia/Tokyo
         working_dir: /workspace
@@ -45,11 +45,11 @@ services:
         build: 
             context: .
             dockerfile: mysql/Dockerfile
+        env_file:
+            - .env
         hostname: music
         ports:
             - 3306:3306
-        env_file:
-            - mysql/.env
         command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --skip-character-set-client-handshake
         volumes:
             - ../db/mysql:/var/lib/mysql
